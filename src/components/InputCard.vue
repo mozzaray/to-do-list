@@ -10,7 +10,7 @@ import Btn from './base/Button.vue'
 
             <div class="flex gap-2 justify-between">
             <Input />
-            <Btn icon="add" /> 
+            <Btn icon="add" bgcolor="blue" /> 
             </div>
             
     </Card>
