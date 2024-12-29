@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const props = defineProps({
+defineProps({
     icon: {
         type: String, //icon用法: add-加號
         default: 'add'

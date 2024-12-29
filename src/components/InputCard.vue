@@ -4,9 +4,9 @@ import Input from './base/Input.vue'
 import Btn from './base/Button.vue'
 
 defineProps({
- isBlank: Boolean,
- clickAdd: Function,
- modelValue: String,
+    isBlank: Boolean,
+    clickAdd: Function,
+    modelValue: String,
 });
 const emit = defineEmits(['update:modelValue']);
 
