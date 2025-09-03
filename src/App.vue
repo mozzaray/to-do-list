@@ -1,18 +1,37 @@
 <script setup>
 import InputCard from './components/InputCard.vue';
 import TodoCard from './components/TodoCard.vue';
-import { ref } from 'vue';
+import Btn from './components/base/Button.vue';
+import { computed, ref, watch } from 'vue';
 
-// const blank = ref(false);
-// const todoInput = ref('');
 const todoData = ref([]);
+const status = ref('undone'); // undone, done
+const id = ref(1);
 
 const addTodo = (emitVal) => {
   const newTodo = emitVal.trim();
   if (newTodo) {
-    todoData.value.unshift(newTodo);
+    todoData.value.unshift({
+      id: id.value++,
+      text: newTodo,
+      done: false,
+    });
   }
 }
+
+const deleteData = (id) => {
+  const index = todoData.value.findIndex(item => item.id === id);
+  todoData.value.splice(index, 1);
+}
+
+const filterList = computed(() => {
+  if(status.value === 'undone'){
+    return todoData.value.filter(item => !item.done);
+  }
+  if(status.value === 'done'){
+    return todoData.value.filter(item => item.done);
+  }
+});
 
 </script>
 
@@ -24,14 +43,35 @@ const addTodo = (emitVal) => {
     
       <InputCard @update:add-todo="addTodo"></InputCard>
       
-      <div class="self-end">
-        <h6>Completed Tasks</h6>
+      <div class="self-end flex gap-2">
+        <button type="button"
+        :class="status == 'undone'
+          ? 'border-indigo-600 border-2 bg-indigo-100 text-indigo-600 font-bold rounded px-4 py-2'
+          : 'bg-white px-4 py-2 rounded text-slate-400 border-2 border-slate-400 font-bold'"
+          @click="status = 'undone'"
+        >
+            <h6>Undone</h6>
+        </button>
+        
+        <button type="button"
+          :class="status == 'done'
+          ? 'border-indigo-600 border-2 bg-indigo-100 text-indigo-600 font-bold rounded px-4 py-2'
+          : 'bg-white px-4 py-2 rounded text-slate-400 border-2 border-slate-400 font-bold'"
+          @click="status = 'done'"
+        >
+            <h6>Completed</h6>
+        </button>
+
       </div>
+
       <!-- list cards -->
-      <TodoCard v-for="(item, index) in todoData" :index="index"
-        @update:delete-todo="todoData.splice($event, 1)">
-        {{ item }}
-      </TodoCard>
+        <TodoCard v-for="(item, index) in filterList" :index="index"
+          v-model="item.done"
+          :key="item.text+index"
+          :delete="() => deleteData(item.id)"
+          >
+          {{ item.text }}
+        </TodoCard>     
     </div>
    
 

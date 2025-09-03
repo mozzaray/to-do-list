@@ -15,7 +15,6 @@ const note = ref('');
 const emit = defineEmits(['update:addTodo']);
 
 const clickAdd = function() {
-    console.log(note.value)
     if(note.value === '') {
         isBlank.value = true;
     } else {
@@ -39,7 +38,7 @@ const clickAdd = function() {
                 </p>  
             </div>
             
-            <Btn icon="add" @click="clickAdd"
+            <Btn bgcolor="blue" icon="add" @click="clickAdd"
                 /> 
             </div>
             
