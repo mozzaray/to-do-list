@@ -1,6 +1,19 @@
-# Vue 3 + Vite
+# To-Do List 
+A simple side project of a to-do list.
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This project uses Vue 3 + Taiwind CSS to render a to-do list web application.
+Features:
+- Insert and delete tasks
+- Mark done tasks
+- Responsive website
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
-# to-do-list
+## Tech Stack
+- Vue 3
+- Vite
+- Tailwind CSS
+
+## Version
+- 1.0.0
+
+## Live Demo
+[View on GitHub Pages](https://mozzaray.github.io/to-do-list/)

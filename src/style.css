@@ -19,3 +19,7 @@ h6{
 h5{
   @apply text-base;
 }
+
+h4{
+  @apply text-lg;
+}

@@ -1,12 +1,12 @@
 <script setup>
 import InputCard from './components/InputCard.vue';
 import TodoCard from './components/TodoCard.vue';
-import Btn from './components/base/Button.vue';
 import { computed, ref, watch } from 'vue';
 
 const todoData = ref([]);
 const status = ref('undone'); // undone, done
 const id = ref(1);
+const version = __APP_VERSION__;
 
 const addTodo = (emitVal) => {
   const newTodo = emitVal.trim();
@@ -37,17 +37,19 @@ const filterList = computed(() => {
 
 <template>
   <section class="bg-gray-300 w-full min-h-screen">
-
-    <div class="w-7/12 flex flex-col items-center gap-3 py-5 mx-auto">
-       <h5 class="font-bold">To-do List</h5>
-    
+    <div class="w-10/12 flex flex-col items-center gap-3 py-5 mx-auto
+    lg:w-7/12">
+      <p class ="text-gray-400 self-end">v-{{ version }}</p>
+       <h4 class="font-bold">To-do List</h4>
+      
       <InputCard @update:add-todo="addTodo"></InputCard>
       
-      <div class="self-end flex gap-2">
+      <div class="self-center flex gap-2
+                  md:self-end">
         <button type="button"
         :class="status == 'undone'
-          ? 'border-indigo-600 border-2 bg-indigo-100 text-indigo-600 font-bold rounded px-4 py-2'
-          : 'bg-white px-4 py-2 rounded text-slate-400 border-2 border-slate-400 font-bold'"
+          ? 'border-indigo-600 border-2 bg-indigo-100 text-indigo-600 font-bold rounded px-4 py-2 lg:px-2 lg:py-1'
+          : 'bg-white rounded text-slate-400 border-2 border-slate-400 font-bold px-4 py-2 lg:px-2 lg:py-1'"
           @click="status = 'undone'"
         >
             <h6>Undone</h6>
@@ -55,8 +57,8 @@ const filterList = computed(() => {
         
         <button type="button"
           :class="status == 'done'
-          ? 'border-indigo-600 border-2 bg-indigo-100 text-indigo-600 font-bold rounded px-4 py-2'
-          : 'bg-white px-4 py-2 rounded text-slate-400 border-2 border-slate-400 font-bold'"
+          ? 'border-indigo-600 border-2 bg-indigo-100 text-indigo-600 font-bold rounded px-4 py-2 lg:px-2 lg:py-1'
+          : 'bg-white rounded text-slate-400 border-2 border-slate-400 font-bold px-4 py-2 lg:px-2 lg:py-1'"
           @click="status = 'done'"
         >
             <h6>Completed</h6>

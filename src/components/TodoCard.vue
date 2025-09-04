@@ -17,9 +17,9 @@ const emit = defineEmits(['update:deleteTodo']);
 
 <template>
     <!-- <div> -->
-        <Card class="flex gap-2 justify-between"
+        <Card class="flex gap-2 justify-between items-center"
         :class="model ? 'opacity-60' : ''">
-                <label :for="index" class="flex-grow cursor-pointer flex gap-2 content-center flex-wrap" >
+                <label :for="index" class="flex-grow cursor-pointer flex gap-2 content-center flex-nowrap" >
                     
                     <div class="border-2 border-gray-300 rounded w-5 h-5 flex-shrink-0
                     has-[:checked]:bg-blue-500 has-[:checked]:border-blue-500"
